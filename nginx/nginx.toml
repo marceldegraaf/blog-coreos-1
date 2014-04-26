@@ -1,0 +1,8 @@
+[template]
+keys        = [ "app/server" ]
+owner       = "nginx"
+mode        = "0644"
+src         = "nginx.conf.tmpl"
+dest        = "/etc/nginx/sites-enabled/app.conf"
+check_cmd   = "/usr/sbin/nginx -t -c /etc/nginx/nginx.conf"
+reload_cmd  = "/usr/sbin/service nginx reload"
