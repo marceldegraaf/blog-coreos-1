@@ -2,8 +2,9 @@
 Description=nginx
 
 [Service]
+EnvironmentFile=/etc/environment
 ExecStartPre=/usr/bin/docker pull marceldegraaf/nginx
-ExecStart=/bin/bash -c "/usr/bin/docker run --rm --name nginx -p 80:80 -e HOST_IP=$(ip address show docker0 | grep 'inet ' | awk '{gsub(/\/[0-9]{2}/, \"\"); print $2}') marceldegraaf/nginx"
+ExecStart=/bin/bash -c "/usr/bin/docker run --rm --name nginx -p 80:80 -e HOST_IP=$COREOS_PUBLIC_IPV4 marceldegraaf/nginx"
 ExecStop=/usr/bin/docker kill nginx
 
 [X-Fleet]
