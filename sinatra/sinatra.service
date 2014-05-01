@@ -10,4 +10,4 @@ ExecStop=/usr/bin/docker kill sinatra-%i
 ExecStopPost=/usr/bin/etcdctl rm /app/server/%i
 
 [X-Fleet]
-X-Conflicts=sinatra*.service
+X-Conflicts=sinatra@%i.service
