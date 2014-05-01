@@ -5,9 +5,9 @@ Description=sinatra
 EnvironmentFile=/etc/environment
 ExecStartPre=/usr/bin/docker pull marceldegraaf/sinatra
 ExecStart=/usr/bin/docker run --name sinatra-%i --rm -p %i:5000 -e PORT=5000 marceldegraaf/sinatra
-ExecStartPost=/bin/bash -c "/usr/bin/etcdctl set /app/server/%i $COREOS_PUBLIC_IPV4:%i"
+ExecStartPost=/usr/bin/etcdctl set /app/server/%i ${COREOS_PUBLIC_IPV4}:%i
 ExecStop=/usr/bin/docker kill sinatra-%i
 ExecStopPost=/usr/bin/etcdctl rm /app/server/%i
 
 [X-Fleet]
-X-Conflicts=sinatra@%i.service
+X-Conflicts=sinatra*.service
