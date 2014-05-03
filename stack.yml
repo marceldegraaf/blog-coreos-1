@@ -9,7 +9,7 @@ Mappings:
     eu-west-1:
       ami: ami-8368adf4
     us-east-1:
-      ami: ami-e4dde5a1
+      ami: ami-3becf652
     us-west-1:
       ami: ami-e4dde5a1
     us-west-2:
